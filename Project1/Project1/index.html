@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Project 1</title>
+    <meta name="description" content="Project 1">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="libs/css/style.css">
+
+
+</head>
+
+<body>
+    <div id="main">
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <h1>API</h1>
+                    </td>
+                    <td>
+                        <h1>API Description</h1>
+                    </td>
+                    <td>
+
+                    </td>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        1- Astergdem
+                    </td>
+                    <td>
+                        <p></p>
+                        <label>Latitude: </label>
+                        <input type="text" name="lat" id="astergdem_lat" value="0" placeholder="0">
+                        <label>Longitude: </label>
+                        <input type="text" name="lng" id="astergdem_lng" value="0" placeholder="0">
+
+                    </td>
+                    <td>
+                        <button class="submit" id="api_astergdem_submit">Submit</button>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        2- Timezone
+                    </td>
+                    <td>
+                        <p></p>
+                        <label>Latitude: </label>
+                        <input type="text" name="lat" id="timezone_lat" value="0" placeholder="0">
+                        <label>Longitude: </label>
+                        <input type="text" name="lng" id="timezone_lng" value="0" placeholder="0">
+
+                    </td>
+                    <td>
+                        <button class="submit" id="api_timezone_submit">Submit</button>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        3- Neighbourhood / reverse geocoding
+                    </td>
+                    <td>
+                        <p>The neighbourhood for US cities. Data provided by Zillow under cc-by-sa license.</p>
+                        <label>Latitude: </label>
+                        <input type="text" name="lat" id="Neighbourhood_lat" value="0" placeholder="0">
+                        <label>Longitude: </label>
+                        <input type="text" name="lng" id="Neighbourhood_lng" value="0" placeholder="0">
+                    </td>
+                    <td>
+                        <button class="submit" id="api_Neighbourhood_submit">Submit</button>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td colspan='3' id="result">
+                        Result
+                    </td>
+
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+    <script type="application/javascript" src="libs/js/script.js"></script>
+
+</body>
+
+</html>
