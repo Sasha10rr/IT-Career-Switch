@@ -1,8 +1,8 @@
 <?php
 
 	$executionStartTime = microtime(true) / 1000;
-	$country = $_REQUEST['country'];
-	$url='https://restcountries.com/v2/name/'.$country;
+	 
+	$url='https://openexchangerates.org/api/latest.json?app_id=c68e90cae6214744ab106e4d6ffd3095';
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

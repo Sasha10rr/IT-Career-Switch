@@ -1,8 +1,8 @@
 <?php
 
 	$executionStartTime = microtime(true) / 1000;
-	$country = $_REQUEST['country'];
-	$url='https://restcountries.com/v2/name/'.$country;
+	$city = $_REQUEST['city'];
+	$url='https://api.openweathermap.org/data/2.5/forecast?q=' .$city. '&appid=1ed05f7083a455d1d8456db2bb406c6f';
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

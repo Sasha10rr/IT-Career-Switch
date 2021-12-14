@@ -1,8 +1,8 @@
 <?php
 
 	$executionStartTime = microtime(true) / 1000;
-	$country = $_REQUEST['country'];
-	$url='https://restcountries.com/v2/name/'.$country;
+	$country = $_REQUEST['countryName'];
+	$url = 'https://en.wikipedia.org/api/rest_v1/page/summary/'.$country;
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
