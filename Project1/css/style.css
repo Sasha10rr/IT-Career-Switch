@@ -1,0 +1,17 @@
+#map { 
+    height: 100%; 
+    
+}
+
+#mapstyle{
+    height: 90vh;  
+  
+}
+
+#nav{
+    float: right;
+}
+
+#searchCountry{
+   margin-right: 20px;
+}
