@@ -1,3 +1,5 @@
+
+
 //Get Countries and append to list
 $.ajax({
     type: "POST",
@@ -82,8 +84,10 @@ function showError(error) {
 }
 
 getLocation();
+
 // Selecting Contry and adding borders
 $('#selectCountries').on('change', function() {
+
     let countryCode = $('#selectCountries').val();
     let countryOptionText = $('#selectCountries').find('option:selected').text();
     $.ajax({
@@ -122,33 +126,32 @@ $('#selectCountries').on('change', function() {
 
 
             //Restcountries
-            var countryName = $('#selectCountries option:selected').text();
+            var countryName = $('#selectCountries option:selected').text()
             $.ajax({
                 url: "./php/restCountries.php",
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    country: countryName,
+                    country: $('#selectCountries option:selected').val(),
                 },
 
                 success: function(result) {
                     
-                    var countryVal = result.data[0].currencies.map(c => c.code);
-                    var city = result.data[0].capital;
-
-                    $("#country").text(result.data[0].name);
-                    $("#city").text(result.data[0].capital);
-                    $("#continent").text(result.data[0].continents);
-                    $("#latitude").text(result.data[0].latlng[0]);
-                    $("#longitude").text(result.data[0].latlng[1]);
-                    $("#area").text(result.data[0].area);
-                    $("#timezone").text(result.data[0].timezones);
-                    $("#population").text(result.data[0].population);
-                    $("#currencies").text((result.data[0].currencies).map(c => c.name));
-                    $("#languages").text((result.data[0].languages).map(c => c.name));
+                    var countryVal = result.data.currencies.map(c => c.code);
+                    var city = result.data.capital;
+                    $("#country").text(result.data.name);
+                    $("#city").text(result.data.capital);
+                    $("#continent").text(result.data.continents);
+                    $("#latitude").text(result.data.latlng[0]);
+                    $("#longitude").text(result.data.latlng[1]);
+                    $("#area").text(result.data.area);
+                    $("#timezone").text(result.data.timezones);
+                    $("#population").text(result.data.population);
+                    $("#currencies").text((result.data.currencies).map(c => c.name));
+                    $("#languages").text((result.data.languages).map(c => c.name));
 
                     var flagIcon = L.icon({
-                        iconUrl: result.data[0].flag,
+                        iconUrl: result.data.flag,
                         iconSize: [25, 25], // size of the icon
                         shadowSize: [50, 64], // size of the shadow
                         iconAnchor: [0, 0], // point of the icon which will correspond to marker's location
@@ -156,9 +159,9 @@ $('#selectCountries').on('change', function() {
                         popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
                     });
 
-                    L.marker([result.data[0].latlng[0], result.data[0].latlng[1]], {
+                    L.marker([result.data.latlng[0], result.data.latlng[1]], {
                         icon: flagIcon
-                    }).addTo(map).bindPopup("Name: " + result.data[0].name + " Population: " + result.data[0].population + " Language: " + (result.data[0].languages).map(c => c.name));
+                    }).addTo(map).bindPopup("Name: " + result.data.name + " Population: " + result.data.population + " Language: " + (result.data.languages).map(c => c.name));
 
 
 
@@ -178,15 +181,17 @@ $('#selectCountries').on('change', function() {
                     });
 
                     //WIKIPLACES
+                    
                     $.ajax({
                         url: "./php/wikipedia.php",
                         type: 'POST',
                         dataType: 'json',
                         data: {
-                            countryName: countryName,
+                            countryName: countryName.replace(" ", "_"),
                         },
                         success: function(result) {
-                            $("#wiki").html(result.data.extract_html);
+                            
+                            $("#wiki").html(result.data.extract);
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             console.log(textStatus, errorThrown);
@@ -231,7 +236,8 @@ $('#selectCountries').on('change', function() {
                             $("#aMax").text(Math.round(result.data.list[11].main.temp_max - 273));
                             $("#aMin").text(Math.round(result.data.list[11].main.temp_min - 273));
                            
-                            var weatherIcon = L.icon({
+                            
+                      /*      var weatherIcon = L.icon({
                                 iconUrl: "https://openweathermap.org/img/wn/" + result.data.list[0].weather[0].icon + ".png",
                                 iconSize: [45, 45], // size of the icon
                                 shadowSize: [50, 64], // size of the shadow
@@ -242,12 +248,19 @@ $('#selectCountries').on('change', function() {
 
                             L.marker([result.data.city.coord.lat, result.data.city.coord.lon], {
                                 icon: weatherIcon
-                            }).addTo(map).bindPopup(result.data.list[0].weather[0].main + " " + Math.round(result.data.list[0].main.temp_max - 273) + "°C");
+                            }).addTo(map).bindPopup(result.data.list[0].weather[0].main + " " + Math.round(result.data.list[0].main.temp_max - 273) + "°C"); */
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             console.log(textStatus, errorThrown);
                         }
                     });
+
+
+                   
+
+
+
+
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);
@@ -262,7 +275,79 @@ $('#selectCountries').on('change', function() {
     });
 });
 
-var map = L.map('map').setView([41.9985, 21.4313], 13);
+ // AIRPORTS
+
+ $.ajax({
+    url: './php/airports.php',
+    type: 'GET',
+    dataType: 'json',
+    data: {
+        
+    },
+
+    success: function(result) {
+
+        
+      
+      const geojsonMarkerOptions = {
+        radius: 8,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8,
+      };
+      
+     
+     
+      function onEachFeature(feature, layer) {
+        
+        
+      const popupContent =
+        '<h4 class = "text-primary">Airport</h4>' +
+        '<div class="container"><table class="table table-striped">' +
+        "<thead><tr><th>Properties</th><th>Value</th></tr></thead>" +
+        "<tbody><tr><td> Name </td><td>" +
+        feature.properties.name +
+        "</td></tr>" +
+        "<tr><td>Country </td><td>" +
+        feature.properties.country +
+        "</td></tr>" +
+        "<tr><td> Website (watt) </td><td>" +
+        feature.properties.website +
+        "</td></tr>";
+        
+            layer.bindPopup(popupContent);
+            
+        
+      
+    }
+      
+
+     var dotsMarkers= L.geoJSON(result.airports.features, {
+        onEachFeature:onEachFeature,
+        pointToLayer: function (feature, latlng) {
+            return (L.circleMarker(latlng, geojsonMarkerOptions));
+            
+          }   
+      });
+       
+      var markers = L.markerClusterGroup();
+      markers.addLayer(dotsMarkers);
+      map.addLayer(markers);
+
+
+
+},
+    error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+    }
+});
+
+
+
+
+var map = L.map('map').setView([41.9985, 21.4313], 3);
 
 L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=YYGY5XbRNrBk7Nyt0HEM', {
     attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
@@ -272,3 +357,4 @@ L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=YYGY5XbRNr
     zoomOffset: -1,
     accessToken: 'your.mapbox.access.token'
 }).addTo(map);
+
