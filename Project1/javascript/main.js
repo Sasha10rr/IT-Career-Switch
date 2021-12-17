@@ -84,7 +84,9 @@ function showError(error) {
 }
 
 getLocation();
-
+var border;
+var dotsMarkers;
+var markers = L.markerClusterGroup()
 // Selecting Contry and adding borders
 $('#selectCountries').on('change', function() {
 
@@ -102,11 +104,17 @@ $('#selectCountries').on('change', function() {
                     countryId = i;
                 }
             }
+            if (map.hasLayer(border)) {
+                map.removeLayer(border);
+            }
+            
+            
             border = L.geoJSON(countryOptionData, {
                 color: "#" + Math.floor(Math.random() * 6234562).toString(16),
                 weight: 3,
                 opacity: 0.75
             }).addTo(map);
+            
 
             let bounds = border.getBounds();
             map.flyToBounds(bounds, {
@@ -115,6 +123,8 @@ $('#selectCountries').on('change', function() {
 
 
             });
+
+            
             showPosition = position => {
                 const lat = position.coords.latitude
                 latitude.innerHTML = position.coords.latitude;
@@ -136,7 +146,7 @@ $('#selectCountries').on('change', function() {
                 },
 
                 success: function(result) {
-                    
+                    console.log(result)
                     var countryVal = result.data.currencies.map(c => c.code);
                     var city = result.data.capital;
                     $("#country").text(result.data.name);
@@ -256,7 +266,90 @@ $('#selectCountries').on('change', function() {
                     });
 
 
-                   
+                    $.ajax({
+                        url: './php/airports.php',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: {
+                            
+                        },
+                    
+                        success: function(result) {
+                    
+                            
+                           
+                          const geojsonMarkerOptions = {
+                            radius: 8,
+                            fillColor: "#ff7800",
+                            color: "#000",
+                            weight: 0.4,
+                            opacity: 1,
+                            fillOpacity: 0.8,
+                          };
+                          
+                         
+                         
+                          function onEachFeature(feature, layer) {
+                           
+        
+        
+                            
+                               if(countryCode===feature.properties.country_code){
+                                   
+                              
+                               
+                            
+                          const popupContent =
+                            '<h4 class = "text-primary">Airport</h4>' +
+                            '<div class="container"><table class="table table-striped">' +
+                            "<thead><tr><th>Properties</th><th>Value</th></tr></thead>" +
+                            "<tbody><tr><td> Name </td><td>" +
+                            feature.properties.name +
+                            "</td></tr>" +
+                            "<tr><td>Country </td><td>" +
+                            feature.properties.country +
+                            "</td></tr>" +
+                            "<tr><td> Website (watt) </td><td>" +
+                            feature.properties.website +
+                            "</td></tr>";
+                            
+                                layer.bindPopup(popupContent);
+                                
+                            
+                            }
+                        }
+
+                     
+                     
+                        
+                        if(map.hasLayer(markers)){
+                             
+                            markers.eachLayer(function (layer) {
+
+                                markers.removeLayer(layer);
+                            
+                            });
+                          
+                         }
+                        
+                         
+                          dotsMarkers= L.geoJSON(result.airports.features, {
+                            onEachFeature:onEachFeature,
+                            pointToLayer: function (feature, latlng) {
+                                if(countryCode===feature.properties.country_code)
+                                return (L.circleMarker(latlng, geojsonMarkerOptions));
+                                
+                              }   
+                          })
+                          markers.addLayer(dotsMarkers).addTo(map);
+     
+                         
+                         
+                    },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
+                    });
 
 
 
@@ -266,6 +359,11 @@ $('#selectCountries').on('change', function() {
                     console.log(textStatus, errorThrown);
                 }
             });
+
+
+         
+
+
         },
 
         error: function(jqXHR, textStatus, errorThrown) {
@@ -277,72 +375,6 @@ $('#selectCountries').on('change', function() {
 
  // AIRPORTS
 
- $.ajax({
-    url: './php/airports.php',
-    type: 'GET',
-    dataType: 'json',
-    data: {
-        
-    },
-
-    success: function(result) {
-
-        
-      
-      const geojsonMarkerOptions = {
-        radius: 8,
-        fillColor: "#ff7800",
-        color: "#000",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.8,
-      };
-      
-     
-     
-      function onEachFeature(feature, layer) {
-        
-        
-      const popupContent =
-        '<h4 class = "text-primary">Airport</h4>' +
-        '<div class="container"><table class="table table-striped">' +
-        "<thead><tr><th>Properties</th><th>Value</th></tr></thead>" +
-        "<tbody><tr><td> Name </td><td>" +
-        feature.properties.name +
-        "</td></tr>" +
-        "<tr><td>Country </td><td>" +
-        feature.properties.country +
-        "</td></tr>" +
-        "<tr><td> Website (watt) </td><td>" +
-        feature.properties.website +
-        "</td></tr>";
-        
-            layer.bindPopup(popupContent);
-            
-        
-      
-    }
-      
-
-     var dotsMarkers= L.geoJSON(result.airports.features, {
-        onEachFeature:onEachFeature,
-        pointToLayer: function (feature, latlng) {
-            return (L.circleMarker(latlng, geojsonMarkerOptions));
-            
-          }   
-      });
-       
-      var markers = L.markerClusterGroup();
-      markers.addLayer(dotsMarkers);
-      map.addLayer(markers);
-
-
-
-},
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown);
-    }
-});
 
 
 

@@ -6,6 +6,9 @@
 
 	$airports = json_decode($result, true);	
 
+
+
+    
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "mission saved";
