@@ -3,11 +3,7 @@
 
     $executionStartTime = microtime(true) / 1000;
     $result = file_get_contents('../json/airports.geojson');
-
 	$airports = json_decode($result, true);	
-
-
-
     
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";

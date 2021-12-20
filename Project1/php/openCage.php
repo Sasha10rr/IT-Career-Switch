@@ -2,7 +2,7 @@
  $executionStartTime = microtime(true) / 1000;
 	$lat = $_REQUEST['lat'];
      
-	$log = 	$_POST["lng"];
+	$log = 	$_REQUEST["lng"];
   
     //$url='https://restcountries.eu/rest/v2/alpha/'. $_REQUEST['lat'];
     //$url= 'https://api.opencagedata.com/geocode/v1/json?q=LAT+LNG&key=d15534ffc3514c07817111eacd8ea75b';
