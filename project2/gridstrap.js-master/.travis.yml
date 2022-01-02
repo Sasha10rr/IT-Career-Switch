@@ -1,0 +1,16 @@
+language: node_js 
+notifications:
+  email: false
+node_js:
+  - '10'
+before_install: 
+  - npm install -g grunt-cli
+before_script:
+  - npm prune
+script: 
+  - npm run test
+after_success:
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
