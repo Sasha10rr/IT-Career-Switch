@@ -86,6 +86,10 @@ body{
 }
 
 
+
+ 
+
+
     .job-box-filter a.filtsec {
         margin-top: 8px;
         display: inline-block;
@@ -227,7 +231,7 @@ body{
     }
     
     .card {
-        height: 79vh;
+       
         border-radius: 5px;
         -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
         box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
@@ -413,11 +417,43 @@ body{
       }
 
      #img1{
-        max-width: 100%;
+        max-width: 20%;
         height: auto;
      }
-    #profileCard{
-        visibility: hidden;
+     #editEmployeeButton{ 
+         margin-bottom: 5px;
+         
+     }
+
+     
+     #closeProfileCard{
+        width:20px;
+        height: 20px;
+        display:inline-block;
+        overflow: auto;
+        white-space: nowrap;
+        margin-top:12px ;
+        border:2px red solid; 
+     }
+     #closeDepartmentCard{
+        width:20px;
+        height: 20px;
+        display:inline-block;
+        overflow: auto;
+        white-space: nowrap;
+        margin-top:12px ;
+        border:2px red solid; 
+     }
+     #closeLocationCard{
+        width:20px;
+        height: 20px;
+        display:inline-block;
+        overflow: auto;
+        white-space: nowrap;
+        margin-top:12px ;
+        border:2px red solid; 
+     }
+    #profileCard{ 
         top: 50%; /* IMPORTANT */
         /* IMPORTANT */
              width: auto;
@@ -425,20 +461,21 @@ body{
              top:100px; 
               
     }
-        
+        #deleteButton{
+            margin-top: 5px;
+        }
     @media only screen and (max-width: 790px) {
 
     #profileCard{
-        
-        top: 50%; /* IMPORTANT */
+             height: fit-content;
+             border:2px rgb(44, 40, 40) solid; 
+             top: 50%; /* IMPORTANT */
         /* IMPORTANT */
-             width: 80%;
-             z-index:111; 
-             top:100px;
+             width: 75%;
+             z-index:111;  
              margin-right: 25px;
-             
              position: absolute;
-             top: 55%;
+             top: 50%;
              left: 50%;
              transform: translate(-50%, -50%);
     }
@@ -512,9 +549,7 @@ body{
    
 }
 
-#departmentNameCard{
-
-}
+ 
 .form-check{
     display: none;
     
@@ -535,18 +570,18 @@ body{
     visibility: hidden;
     top: 50%; /* IMPORTANT */
     /* IMPORTANT */
-         width: 35%;
-         z-index:1;
-         position:absolute;
+         width:auto;
+         z-index:232321; 
          top:100px;
           
 }
 @media only screen and (max-width: 790px) {
     #cardLocation{
-    
+        border-radius: 6px;
+        border-style: solid; 
         top: 50%; /* IMPORTANT */
         /* IMPORTANT */
-             width: 80%;
+             width: 75%;
              z-index:1; 
              top:100px;
              margin-right: 25px;
@@ -562,28 +597,38 @@ body{
     }
 
 }
+#deleteDepartmentButton{
+    margin-top:10px;
+    margin-bottom:10px;
+}
 
 #cardDepartment{
-    visibility: hidden;
-    top: 50%; /* IMPORTANT */
+    border-radius: 6px;
+    border-style: solid;
+    visibility: hidden; 
     /* IMPORTANT */
-         width: 35%;
-         z-index:11;
-         position:absolute;
-         top:100px;
+         width: auto;
+         height: 80vh;
+         z-index:111;  
+ 
           
 }
 
+
 @media only screen and (max-width: 790px) {
+    #employeeListInDepartment{
+        height: 150px !important;
+    }
     #cardDepartment{
-    
-        top: 50%; /* IMPORTANT */
+            height: auto;
+               border-radius: 6px;
+                 border-style: solid; 
         /* IMPORTANT */
-             width: 80%;
+              width: 75%;
+             visibility: hidden;
              z-index:11; 
              top:100px;
              margin-right: 25px;
-             
              position: absolute;
              top: 55%;
              left: 50%;
@@ -704,7 +749,9 @@ body{
     transition: all 0.3s ease;
     margin-top: 16px;
 }
-
+#submitButton{
+    display: none;
+}
 
 .btn-primary{
     background-color: #6C757D;
@@ -805,4 +852,23 @@ hr.new1 {
 
 .formField{
     margin: 5px;
+}
+
+#employeeListInDepartment{
+    height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+#titleEditEmployee{
+    display: none;
+}
+
+#deleteLocationButton{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.iconClass{
+    color: #07b107;
 }
