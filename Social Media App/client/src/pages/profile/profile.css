@@ -1,0 +1,235 @@
+.profileImg{
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+}
+.profileTop{
+   height: 500px;
+    background: rgb(185,192,198);
+    background: linear-gradient(0deg, rgba(185,192,198,1) 0%, rgba(160,170,180,1) 10%, rgba(231,231,231,0.45171572046787467) 40%, rgba(200,184,169,1) 58%, rgba(222,216,220,1) 78%, rgba(203,192,193,1) 98%);
+
+    display: flex;
+    
+    justify-content: center; 
+}
+ 
+.coverContainer{ 
+    display: flex;
+    width: 948px;
+}
+
+.coverImg{ 
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 100%;
+    height: 348px; 
+    align-items: center;
+    background-color: rebeccapurple;
+}
+
+.infoContainer{  
+    position: absolute;
+    top: 350px; 
+    padding-right: 600px;
+}
+
+.profileName{
+    font-weight: bold;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 10px;
+    top: 70px;
+}
+
+.friendsNum{ 
+    position: absolute;
+    margin-left: 10px;
+    top: 110px;
+
+}
+
+.editProfileButton{
+    background-color: #fff;
+    position: absolute; 
+    top: 140px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 8px;
+    width: 100px;
+    height: 32px; 
+    margin-left: 5px;
+    border-style: none;
+}
+
+.editProfileButton:hover{
+    background-color: whitesmoke;
+    position: absolute; 
+    top: 140px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 8px;
+    width: 100px;
+    height: 32px; 
+    margin-left: 5px;
+    border-style: none;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+.profileBottom{ 
+    display: flex;
+    justify-content: center; 
+    overflow: scroll;
+}
+.profileBottom::-webkit-scrollbar {
+    display: none;
+}
+
+.profileBottomWrapper{ 
+display: flex; 
+justify-content: center;
+width: 980px;
+padding: 20px;
+
+}
+.leftProfile{ 
+    height: 50vh;  
+    flex: 4;    
+    position: sticky;
+    top: 75px;
+    margin-right: 10px;
+}
+
+.rightProfile{   
+    
+    background-color: whitesmoke;
+     width: 100%; 
+       flex: 8;
+       margin-left: 10px;
+
+}
+
+
+.rightShare{
+    
+    margin: 10px;
+    padding: 10px;
+}
+ 
+ .bottominfoHolder{ 
+     
+    background-color: whitesmoke;
+     padding-top: 10px;
+     box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    border-radius: 6px; 
+     border-radius: 6px;  
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .friendsList{
+     
+    background-color: white;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    border-radius: 6px;  
+    height: 60vh;
+    margin-top: 10px;
+    overflow-y: hidden;
+ }
+ .friendsList:hover{
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+    border-radius: 6px;  
+    height: 60vh;
+    margin-top: 10px;
+    overflow-y: scroll;
+ }
+
+
+ .sidebarFriendList{
+     
+    background-color: white;
+    padding: 0; 
+    margin: 0;
+    list-style: none; 
+}
+.sidebarFriend{
+     
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.sidebarFriend:hover{
+    
+    background-color: grey;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+ 
+.sibarFriendImg{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.aboutBar{
+margin: 10px;
+}
+
+.aboutIcon{
+    margin: 10px;
+}
+
+.wraperAbout{
+    display: flex;
+    align-items: center;
+}
+
+.editCoverPicture{ 
+    cursor: pointer;
+    position:absolute;
+    margin: auto;
+    color: white;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+    
+}
+
+.editProfilePicture{
+    cursor: pointer;
+    position:absolute; 
+    top: 140px;
+    margin-left: -55px;
+    padding: 2px;
+    border-radius: 90%;
+    color: black;
+    border: black; 
+    border-width: 3px;
+    border-style: solid;
+    background-color: white;
+}
+
+.profileContainer{
+    background-color: whitesmoke;
+}

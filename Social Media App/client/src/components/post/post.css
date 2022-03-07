@@ -1,0 +1,138 @@
+.post{
+    margin-top: 20px; 
+    width: 100%; 
+    border-radius: 6px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+-webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+-moz-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.6);
+}
+.postWrapper{
+    padding: 20px;
+}
+.postTop{
+    display: flex;
+    align-items: center; 
+}
+.postUser{
+    font-weight: bold;
+    color: black;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+.timePosted{
+    font-size: 12px;
+}
+.postMore{
+    margin-left: 350px;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+.postImgUser{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+}
+.postImg{
+    max-width: 100%;
+    height: 500px;
+}
+.postCenter{
+    margin-top: 20px;
+}
+ .postImg{
+     margin-top: 10px;
+ }
+
+ .imgLikesNum{
+     width: 22px;
+     height: 22px;
+ }
+
+ .postBottom{
+     margin-left: 20px;
+     margin-top: 10px;
+     display: flex;
+     align-items: center;
+ }
+
+ .numLikes{
+     cursor: pointer;
+     margin-left: 5px;
+     margin-right: 250px;
+ }
+
+ .numComments{
+     
+    cursor: pointer;
+    color: grey;
+    margin-right: 30px;
+ }
+
+ .postBottomHr{
+     
+     width: 99%;
+     margin-top: 10px;
+ }
+
+ .numShares{
+     
+    cursor: pointer;
+    color: grey;
+ }
+
+ .postButtons{
+     display: flex;
+     align-items: center;
+     justify-content: space-around; 
+ }
+
+ .postButton{
+     
+    display: inline-flex;
+    align-items: center; 
+    text-align: center !important;
+    justify-content: center;
+    border:none;
+    margin-top: 10px;
+    width: 155px;
+    height: 33px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+ .postButton:hover{
+    display: inline-flex;
+    align-items: center; 
+    text-align: center;
+    border:none;
+    margin-top: 10px;
+    width: 155px;
+    height: 33px;
+    cursor: pointer;
+    background-color: rgb(238, 220, 220);
+    font-size: 15px;
+    border-radius: 8px;
+    
+}
+.blue{
+    color: turquoise;
+    display: inline-flex;
+    align-items: center; 
+    text-align: center !important;
+    justify-content: center;
+    border:none;
+    margin-top: 10px;
+    width: 155px;
+    height: 33px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 15px;
+    border-radius: 8px;
+    
+}
+.buttonIcon{
+    margin-right: 4px;
+}

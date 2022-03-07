@@ -1,0 +1,104 @@
+
+.rightbar{ 
+    height: calc(100vh - 50px); 
+    flex:2;
+    position: sticky;
+    top:10px;   
+    padding: 10;
+    
+    overflow-y:hidden;
+    overflow-x: hidden;
+    margin-right: 10px; 
+}
+
+.rightbar:hover{
+    padding: 0;
+    display: block;
+    width: 100%;
+    height: calc(100vh - 50px); 
+    flex:2;
+    position: sticky;
+    top:10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+    margin-right: 10px;
+}
+
+.rightbarWrapper{
+    margin: 0;
+    padding-right: 10px;
+    
+}
+::-webkit-scrollbar{
+    width: 7px;
+    
+}
+::-webkit-scrollbar-track{
+    background-color: rgb(227, 252, 252);
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: rgb(106, 119, 119);
+} 
+
+
+.imgRight{ 
+    width: 100%;
+    margin: 5px;
+}
+
+.actFriends{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.rightbarHr{
+    width: 90%;
+    align-items: center;
+    margin: 5px;
+}
+.activeFriendList{
+    padding:0;
+    
+    list-style: none;
+}
+
+.activeFriend{ 
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.activeFriend:hover{
+    margin-left: 10px;
+    border-radius: 6px;
+    background-color: rgb(165, 165, 161);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+.friendName{
+    margin-left: 20px;
+}
+.friendImg{
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.onlineStatus{
+    position: absolute;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: green;
+    top:  -4;
+}
+
+.listContainer{ 
+    max-height: 400px;
+    overflow-y: scroll;
+    background-color: grey;
+}

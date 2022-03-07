@@ -1,0 +1,15 @@
+
+.feed{
+    height: calc( 100vh - 50px); 
+    flex:4; 
+}
+
+.feed:hover{
+    height: calc( 100vh - 50px); 
+    flex:4; 
+        
+}
+
+.feedWrapper{
+    padding: 20px;
+}
